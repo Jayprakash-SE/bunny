@@ -1,3 +1,5 @@
 templates
 static
 config.yaml
+env
+__pycache__
