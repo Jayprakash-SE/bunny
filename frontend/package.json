@@ -24,6 +24,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.28.0",
     "react-toastify": "^10.0.6",
+    "srt-parser-2": "^1.2.3",
     "wfplayer": "^2.2.7"
   },
   "devDependencies": {
