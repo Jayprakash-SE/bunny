@@ -28,8 +28,9 @@ CONSUMER_SECRET = app.config['CONSUMER_SECRET']
 
 # Enable CORS and Debugging in Dev mode
 if ENV == 'dev':
-    CORS(app, supports_credentials=True)
     app.config['DEBUG'] = True
+
+CORS(app, supports_credentials=True)
 
 # Create Database and Migration Object
 db.init_app(app)
@@ -227,4 +228,4 @@ def logged():
 
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(port=5001)

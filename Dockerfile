@@ -16,10 +16,12 @@ COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the Flask port
-EXPOSE 5000
+EXPOSE 5001
 
 # Initialize SQLite database (optional if you want to pre-create tables)
-RUN sqlite3 /app/toolbunny.db "VACUUM;"
+RUN sqlite3 /app/test.db
+RUN flask db migrate
+RUN flask db upgrade
 
 # Run the Flask backend
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
+CMD ["python3", "app.py"]
