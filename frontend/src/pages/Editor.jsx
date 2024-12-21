@@ -8,10 +8,11 @@ import {
   ListItemText,
 } from "@mui/material";
 import WaveformTimeline from "../components/WaveformTimeline";
+import { useSelector } from "react-redux";
 
 const Editor = () => {
   const videoRef = useRef(null);
-
+  const variable = useSelector((state) => state.myVariable.value);
   return (
     <Grid container sx={{ height: "100vh", backgroundColor: "#121212" }}>
       <Grid
@@ -70,7 +71,7 @@ const Editor = () => {
                 borderRadius: "8px",
                 boxShadow: "0px 0px 30px rgba(255, 255, 255, 0.3)",
               }}
-              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/e/ea/Margrit_Hugentobler%27s_speech%2C_Lidk%C3%B6ping%2C_Sweden.webm/Margrit_Hugentobler%27s_speech%2C_Lidk%C3%B6ping%2C_Sweden.webm.360p.vp9.webm"
+              src={variable}
             ></video>
           </Box>
         </Grid>
