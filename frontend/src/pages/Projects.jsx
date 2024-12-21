@@ -16,7 +16,6 @@ import {
 import { Link } from "react-router-dom";
 import ISO6391 from "iso-639-1";
 import { backendApi } from "../utils/api";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { updateVariable } from "../redux/variables/myVariableSlice";
 
@@ -118,7 +117,7 @@ const Projects = () => {
   const isValidCommonsPage = async (url) => {
     try {
       if (!url.includes('commons.wikimedia.org')) {
-        return false; 
+        return false;
       }
       const match = url.match(
         /^https:\/\/commons\.wikimedia\.org\/wiki\/(.+)$/
@@ -148,15 +147,15 @@ const Projects = () => {
 
       if (Object.keys(pages)[0] !== '-1') {
         const { url } = pages[Object.keys(pages)[0]].videoinfo[0];
-        if (url.length>0){
+        if (url.length > 0) {
           console.log(url)
           UpdateVideoURL(url);
           return true
         }
       }
     } catch (error) {
-    console.error("Error:", error);
-    return false;
+      console.error("Error:", error);
+      return false;
     }
   };
 
@@ -197,39 +196,39 @@ const Projects = () => {
           <Grid container spacing={3}>
             {projects.map((project) => (
               <Grid item xs={12} sm={6} md={4} key={project.id}>
-              <Box
-                component={Link}
-                to={`/editor/${project.id}`}
-                sx={{
-                  textDecoration: "none",
-                  display: "block",
-                }}
-              >
-                <Card
+                <Box
+                  component={Link}
+                  to={`/editor/${project.id}`}
                   sx={{
-                    color: "inherit",
-                    border: "1px solid rgba(0, 0, 0, 0.12)",
-                    boxShadow:
-                      "0px 4px 8px rgba(0, 0, 0, 0.15), 0px -4px 8px rgba(0, 0, 0, 0.15)",
-                    transition: "box-shadow 0.3s ease, transform 0.3s ease",
-                    "&:hover": {
-                      boxShadow:
-                        "0px 8px 16px rgba(0, 0, 0, 0.2), 0px -8px 16px rgba(0, 0, 0, 0.2)",
-                      transform: "scale(1.02)",
-                    },
-                    borderRadius: "8px",
-                    overflow: "hidden",
+                    textDecoration: "none",
+                    display: "block",
                   }}
                 >
-                  <CardContent>
-                    <Typography variant="h6">{project.title}</Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Language: {ISO6391.getNativeName(project.language) || project.language}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Box>
-            </Grid>
+                  <Card
+                    sx={{
+                      color: "inherit",
+                      border: "1px solid rgba(0, 0, 0, 0.12)",
+                      boxShadow:
+                        "0px 4px 8px rgba(0, 0, 0, 0.15), 0px -4px 8px rgba(0, 0, 0, 0.15)",
+                      transition: "box-shadow 0.3s ease, transform 0.3s ease",
+                      "&:hover": {
+                        boxShadow:
+                          "0px 8px 16px rgba(0, 0, 0, 0.2), 0px -8px 16px rgba(0, 0, 0, 0.2)",
+                        transform: "scale(1.02)",
+                      },
+                      borderRadius: "8px",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <CardContent>
+                      <Typography variant="h6">{project.title}</Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Language: {ISO6391.getNativeName(project.language) || project.language}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Box>
+              </Grid>
             ))}
           </Grid>
         </>
